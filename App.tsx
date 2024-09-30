@@ -1,12 +1,13 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './src/navigation/TabNavigator';
 
 function App(): React.JSX.Element {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-    </SafeAreaView>
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
   );
 }
 
 export default App;
-
