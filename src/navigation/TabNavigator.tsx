@@ -17,7 +17,7 @@ function TabNavigator() {
           if (route.name === 'Home') {
             iconPath = require('../assets/icons/Home.png'); // Home için PNG simge
           } else if (route.name === 'Meditation') {
-            iconPath = require('../assets/icons/Meditation.png'); // Settings için PNG simge
+            iconPath = require('../assets/icons/Sounds.png'); // Settings için PNG simge
           }else if (route.name === 'Settings') {
             iconPath = require('../assets/icons/Settings.png'); // Settings için PNG simge
           }
