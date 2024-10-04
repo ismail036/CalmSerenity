@@ -16,7 +16,8 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#253334'
+        backgroundColor: '#253334',
+        fontFamily: 'AlegreyaSans-Regular', // Apply font globally if you want
     },
 });
 

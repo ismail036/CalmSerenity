@@ -17,8 +17,8 @@ const config = {
     babelTransformerPath: require.resolve('react-native-svg-transformer'),
   },
   resolver: {
-    assetExts: assetExts.filter(ext => ext !== 'svg'),
-    sourceExts: [...sourceExts, 'svg'],
+    assetExts: assetExts.filter(ext => ext !== 'svg' && ext !== 'ttf'), // Filter out 'ttf' to handle font files
+    sourceExts: [...sourceExts, 'svg', 'ttf'], // Add 'ttf' to support custom fonts
   },
 };
 
