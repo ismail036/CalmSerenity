@@ -6,31 +6,35 @@ const { width } = Dimensions.get('window');
 function HomeScreen() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Text style={styles.welcomeText}>Welcome!</Text>
-            <Text style={styles.subText}>Choose how you want to relax today</Text>
+            <Text style={[styles.text, styles.welcomeText]}>Welcome!</Text>
+            <Text style={[styles.text, styles.subText]}>Choose how you want to relax today</Text>
 
             <View style={styles.recommendationCard}>
-                <Text style={styles.recommendationTitle}>Recommendations:</Text>
-                <Text style={styles.recommendationText}>We have prepared a recommendation for you today.</Text>
+                <Text style={[styles.text, styles.recommendationTitle]}>Recommendations:</Text>
+                <Text style={[styles.text, styles.recommendationText]}>We have prepared a recommendation for you today.</Text>
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Listen now</Text>
+                    <Text style={[styles.text, styles.buttonText]}>Listen now</Text>
                 </TouchableOpacity>
+                <Image
+                    source={require('../assets/images/recommendationsImage.png')}
+                    style={styles.recommendationImage}
+                />
             </View>
 
-            <Text style={styles.categoryTitle}>Music:</Text>
+            <Text style={[styles.text, styles.categoryTitle]}>Music:</Text>
             <View style={styles.buttonContainer}>
                 {['Calm', 'Very calm', 'Moderate', 'Energetic', 'Growing'].map((item, index) => (
                     <TouchableOpacity key={index} style={styles.optionButton}>
-                        <Text style={styles.optionButtonText}>{item}</Text>
+                        <Text style={[styles.text, styles.optionButtonText]}>{item}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
 
-            <Text style={styles.categoryTitle}>Sound:</Text>
+            <Text style={[styles.text, styles.categoryTitle]}>Sound:</Text>
             <View style={styles.buttonContainer}>
                 {['Ocean', 'Rain', 'Forest', 'Birds', 'City', 'Wind', 'Woodland', 'Storm', 'Traffic', 'Rural', 'Night', 'Room tones'].map((item, index) => (
                     <TouchableOpacity key={index} style={styles.optionButton}>
-                        <Text style={styles.optionButtonText}>{item}</Text>
+                        <Text style={[styles.text, styles.optionButtonText]}>{item}</Text>
                     </TouchableOpacity>
                 ))}
             </View>
@@ -43,30 +47,37 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#253334',
     },
+    text: {
+        fontFamily: 'AlegreyaSansRegular', // Tüm metinlerde bu fontFamily kullanılacak
+    },
     welcomeText: {
         fontSize: 32,
         color: 'white',
-        fontWeight: 'bold',
+        fontFamily: 'AlegreyaBold', // Bu stil ayrı olarak bold font kullanıyor
     },
     subText: {
         fontSize: 18,
         color: 'gray',
         marginVertical: 10,
+        fontFamily: 'AlegreyaSansBold' // Bold kullanılacaksa ayrıca belirtiyoruz
     },
     recommendationCard: {
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 20,
         marginVertical: 20,
+        position: 'relative', // For absolute positioning of the image
     },
     recommendationTitle: {
         fontSize: 22,
-        fontWeight: 'bold',
         marginBottom: 10,
+        fontFamily: 'AlegreyaRegular',
     },
     recommendationText: {
         fontSize: 16,
         marginBottom: 10,
+        width: 190,
+        fontFamily: 'AlegreyaSansRegular',
     },
     button: {
         backgroundColor: '#1abc9c',
@@ -79,13 +90,15 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontSize: 16,
+        fontFamily: 'AlegreyaSansRegular',
     },
     recommendationImage: {
-        width: 80,
-        height: 80,
+        width: '70%',
+        height: '70%',
         position: 'absolute',
-        right: 20,
+        right: -20,
         bottom: 20,
+        resizeMode: 'contain',
     },
     categoryTitle: {
         fontSize: 20,
@@ -94,15 +107,15 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        flexWrap: 'wrap'
     },
     optionButton: {
+        marginHorizontal: 5,
         backgroundColor: '#f0f0f0',
-        borderRadius: 20,
-        padding: 10,
+        borderRadius: 10,
+        paddingVertical: 13,
         marginVertical: 5,
-        width: (width - 60) / 3, // Ekranı üçe bölmek için ayarlanmış genişlik
+        width: ((width - 60) / 3) - 5, // Ekranı üçe bölmek için ayarlanmış genişlik
         alignItems: 'center',
     },
     optionButtonText: {
