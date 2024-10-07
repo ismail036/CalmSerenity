@@ -44,16 +44,29 @@ const MeditationScreen: React.FC = () => {
                     style={styles.meditationImage}
                 />
 
-                <Text style={styles.timerText}>{formatTime(timeLeft)}</Text> 
+                <Text style={styles.timerText}>{formatTime(timeLeft)}</Text>
 
-                <TouchableOpacity style={styles.button} onPress={handleStartPause}>
-                    <Text style={styles.buttonText}>{isRunning ? 'Pause' : 'Start Now'}</Text>
-                </TouchableOpacity>
-
-                {isRunning && (
-                    <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
-                        <Text style={styles.resetButtonText}>Reset</Text>
+                {!isRunning && timeLeft === 2700 && ( // Başlangıç durumu: Sadece "Start Now" butonu görünsün
+                    <TouchableOpacity style={styles.button} onPress={handleStartPause}>
+                        <Text style={styles.buttonText}>Start Now</Text>
                     </TouchableOpacity>
+                )}
+
+                {isRunning && ( // Sayaç çalışıyorsa: Sadece "Pause" butonu görünsün
+                    <TouchableOpacity style={styles.button} onPress={handleStartPause}>
+                        <Text style={styles.buttonText}>Pause</Text>
+                    </TouchableOpacity>
+                )}
+
+                {!isRunning && timeLeft < 2700 && ( // Sayaç durdurulmuşsa: "Resume" ve "Reset" butonları görünsün
+                    <>
+                        <TouchableOpacity style={styles.button} onPress={handleStartPause}>
+                            <Text style={styles.buttonText}>Resume</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.resetButton} onPress={handleReset}>
+                            <Text style={styles.resetButtonText}>Reset</Text>
+                        </TouchableOpacity>
+                    </>
                 )}
             </ScrollView>
         </View>
