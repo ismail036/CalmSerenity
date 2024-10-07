@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, ScrollView, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {BackgroundColorContext} from "../context/BackgroundColorContext.tsx";
 
 const MeditationScreen: React.FC = () => {
+    const { backgroundColor } = useContext(BackgroundColorContext);
+
     const [timeLeft, setTimeLeft] = useState<number>(2700); // Başlangıç süresi 45 dakika (saniye cinsinden)
     const [isRunning, setIsRunning] = useState<boolean>(false); // Geri sayımın çalışıp çalışmadığını kontrol eder
 
@@ -34,8 +37,8 @@ const MeditationScreen: React.FC = () => {
     };
 
     return (
-        <View style={styles.fullScreenView}>
-            <ScrollView contentContainerStyle={styles.container}>
+        <View style={[styles.container, { backgroundColor }]}>
+            <ScrollView contentContainerStyle={[styles.container, { backgroundColor }]}>
                 <Text style={[styles.text, styles.mainText]}>Meditation</Text>
                 <Text style={[styles.text, styles.subText]}>Turn on a timer and meditate</Text>
 
