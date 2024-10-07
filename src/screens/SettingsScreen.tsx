@@ -1,24 +1,36 @@
-import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+// SettingsScreen.tsx
+import React, {useContext} from 'react';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+import { SettingsStackParamList } from '../navigation/SettingsStackNavigator';
+import {BackgroundColorContext} from "../context/BackgroundColorContext.tsx";
 
-const SettingsScreen = () => {
+type SettingsScreenNavigationProp = StackNavigationProp<SettingsStackParamList, 'Settings'>;
+
+const Settings: React.FC = () => {
+    const navigation = useNavigation<SettingsScreenNavigationProp>();
+
+    const { backgroundColor } = useContext(BackgroundColorContext);
+
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerText}>Tools</Text>
-                <Text style={styles.subHeaderText}>Tools for better relaxation</Text>
-            </View>
-
-            <View style={styles.toolsContainer}>
-                <TouchableOpacity style={styles.imageButton}>
+        <View style={[styles.container, {backgroundColor}]}>
+            <View style={styles.buttonsContainer}>
+                <TouchableOpacity
+                    style={styles.imageButton}
+                    onPress={() => navigation.navigate('SleepTracking')}  // SleepTracking ekranına git
+                >
                     <Image
                         source={require('../assets/images/SleepTracking.png')}
                         style={styles.toolImage}
-                        resizeMode="contain" // Ensures image fits within the button
+                        resizeMode="contain"
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.imageButton}>
+                <TouchableOpacity
+                    style={styles.imageButton}
+                    onPress={() => navigation.navigate('BackgroundColor')}  // BackgroundColor ekranına git
+                >
                     <Image
                         source={require('../assets/images/BackgroundColor.png')}
                         style={styles.toolImage}
@@ -26,7 +38,10 @@ const SettingsScreen = () => {
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.imageButton}>
+                <TouchableOpacity
+                    style={styles.imageButton}
+                    onPress={() => navigation.navigate('PersonalDiary')}  // PersonalDiary ekranına git
+                >
                     <Image
                         source={require('../assets/images/PersonalDiary.png')}
                         style={styles.toolImage}
@@ -40,36 +55,23 @@ const SettingsScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1, // Ekranın tamamını kapla
         backgroundColor: '#253334',
         padding: 20,
-        justifyContent: 'center',
+        justifyContent: 'center', // İçeriği dikeyde ortala
     },
-    header: {
-        alignItems: 'center',
-        marginBottom: 30,
-    },
-    headerText: {
-        fontSize: 28,
-        color: '#fff',
-        fontFamily: 'AlegreyaBold',
-    },
-    subHeaderText: {
-        fontSize: 16,
-        color: '#ccc',
-    },
-    toolsContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+    buttonsContainer: {
+        flexDirection: 'row', // Butonları yatayda hizala
+        flexWrap: 'wrap', // Gerekirse bir sonraki satıra geçir
+        justifyContent: 'space-between', // Butonları eşit dağıt
+        alignItems: 'center', // Çapraz eksende ortala
     },
     imageButton: {
-        width: '45%', // Control width of the touchable area
-        aspectRatio: 1, // Ensure it is proportional (square or matching image aspect ratio)
-        marginVertical: 0,
-        borderRadius: 12, // Optional: Add rounded corners if desired
-        overflow: 'hidden', // Ensures the image stays within the rounded corners
+        width: '45%',
+        aspectRatio: 1,
+        borderRadius: 12,
+        overflow: 'hidden',
+        marginBottom: 20, // Satırlar arasında boşluk bırak
     },
     toolImage: {
         width: '100%',
@@ -77,4 +79,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default SettingsScreen;
+export default Settings;

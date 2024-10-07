@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
+import {BackgroundColorContext} from "../context/BackgroundColorContext.tsx";
 
 const { width } = Dimensions.get('window');
 
 function HomeScreen() {
+    const { backgroundColor } = useContext(BackgroundColorContext);
+
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollView style={[styles.container, { backgroundColor }]}>
             <Text style={[styles.text, styles.welcomeText]}>Welcome!</Text>
             <Text style={[styles.text, styles.subText]}>Choose how you want to relax today</Text>
 
@@ -38,6 +41,8 @@ function HomeScreen() {
                     </TouchableOpacity>
                 ))}
             </View>
+
+            <View style={styles.spacer} />
         </ScrollView>
     );
 }
@@ -120,6 +125,10 @@ const styles = StyleSheet.create({
     },
     optionButtonText: {
         fontSize: 16,
+    },
+    spacer: {
+        height: 50,
+        width: '100%',
     },
 });
 

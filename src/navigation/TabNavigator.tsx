@@ -1,31 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, Dimensions } from 'react-native';
-import HomeScreen from '../screens/HomeScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import MeditationScreen from '../screens/MeditationScreen';
+import MeditationStackNavigator from './MeditationStackNavigator';
+import HomeStackNavigator from './HomeStackNavigator';
+import SettingsStackNavigator from './SettingsStackNavigator';
+import { BackgroundColorContext } from '../context/BackgroundColorContext'; // Import the context
 
-// Ekran genişliğini alıyoruz
-const { width, height } = Dimensions.get('window');
-
+const { width } = Dimensions.get('window');
 const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
+    // Access background color from context
+    const { backgroundColor } = useContext(BackgroundColorContext);
+
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color }) => {
                     let iconPath;
-
-                    // Yüzdelik olarak ikon boyutunu ayarlıyoruz
-                    const iconSize = focused ? width * 0.08 : width * 0.06; // Aktif ikon %8, pasif ikon %6 genişlikte
+                    const iconSize = focused ? width * 0.08 : width * 0.06;
 
                     if (route.name === 'Meditation') {
-                        iconPath = require('../assets/icons/Home.png'); // Meditation için PNG simge
+                        iconPath = require('../assets/icons/Home.png');
                     } else if (route.name === 'Home') {
-                        iconPath = require('../assets/icons/Sounds.png'); // Home için PNG simge
+                        iconPath = require('../assets/icons/Sounds.png');
                     } else if (route.name === 'Settings') {
-                        iconPath = require('../assets/icons/Settings.png'); // Settings için PNG simge
+                        iconPath = require('../assets/icons/Settings.png');
                     }
 
                     return (
@@ -38,46 +38,28 @@ function TabNavigator() {
                 tabBarActiveTintColor: '#ffffff',
                 tabBarInactiveTintColor: '#7f8c8d',
                 tabBarStyle: {
-                    backgroundColor: '#253334',
+                    backgroundColor: backgroundColor, // Use background color from context
                     height: 55,
-                    borderTopWidth: 0, // Çizgiyi kaldırmak için border'ı sıfırlıyoruz
-                    shadowColor: 'transparent', // Gölgeyi kaldırmak için şeffaf yapıyoruz
-                    elevation: 0, // Android için gölgeyi kaldırıyoruz
-                },
-                // Header'da yazı yerine logo gösteriyoruz
-                headerTitle: () => (
-                    <Image
-                        source={require('../assets/icons/HeaderLogo.png')} // Header'da ortada gösterilecek logo
-                        style={{ width: 194 / 4.5, height: 214 / 4.5}} // Logonun boyutu
-                    />
-                ),
-                headerStyle: {
-                    backgroundColor: '#253334',
-                    height: 110, // Header yüksekliği
-                    shadowColor: 'transparent', // Gölgeyi kaldırmak için şeffaf yap
-                    elevation: 0, // Android'de gölgeyi kaldırmak için
-                },
-                headerTitleAlign: 'center', // Logoyu tam ortada hizalar
-                headerTitleContainerStyle: {
-                    shadowColor: 'transparent', // Gölgeyi kaldırmak için şeffaf yap
+                    borderTopWidth: 0,
+                    shadowColor: 'transparent',
                     elevation: 0,
                 },
             })}
         >
             <Tab.Screen
                 name="Meditation"
-                component={MeditationScreen}
-                options={{ tabBarLabel: () => null }} // İkonun altındaki yazıyı gizler
+                component={MeditationStackNavigator}
+                options={{ tabBarLabel: () => null, headerShown: false }}
             />
             <Tab.Screen
                 name="Home"
-                component={HomeScreen}
-                options={{ tabBarLabel: () => null }} // İkonun altındaki yazıyı gizler
+                component={HomeStackNavigator}
+                options={{ tabBarLabel: () => null, headerShown: false }}
             />
             <Tab.Screen
                 name="Settings"
-                component={SettingsScreen}
-                options={{ tabBarLabel: () => null }} // İkonun altındaki yazıyı gizler
+                component={SettingsStackNavigator}
+                options={{ tabBarLabel: () => null, headerShown: false }}
             />
         </Tab.Navigator>
     );
