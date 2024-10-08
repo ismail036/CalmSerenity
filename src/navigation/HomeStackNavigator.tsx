@@ -1,20 +1,30 @@
 import React, { useContext } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
+import MusicScreen from '../screens/MusicScreen';
+import SoundScreen from '../screens/SoundScreen';
 import { Image } from 'react-native';
 import CustomBackButton from "../components/CustomBackButton.tsx";
-import { BackgroundColorContext } from '../context/BackgroundColorContext'; // Import the context
+import { BackgroundColorContext } from '../context/BackgroundColorContext';
 
-const HomeStack = createStackNavigator();
+// Define a type for the stack parameters
+type RootStackParamList = {
+    Home: undefined;
+    Music: { label: string };
+    Sound: { label: string };
+};
+
+const HomeStack = createStackNavigator<RootStackParamList>();
+
+
 
 const HomeStackNavigator: React.FC = () => {
-    // Access background color from context
     const { backgroundColor } = useContext(BackgroundColorContext);
 
     return (
         <HomeStack.Navigator
             screenOptions={{
-                headerShown: true, // Show headers for this stack
+                headerShown: true,
                 headerTitle: () => (
                     <Image
                         source={require('../assets/icons/HeaderLogo.png')}
@@ -22,7 +32,7 @@ const HomeStackNavigator: React.FC = () => {
                     />
                 ),
                 headerStyle: {
-                    backgroundColor: backgroundColor, // Use background color from context
+                    backgroundColor: backgroundColor,
                     height: 110,
                     shadowColor: 'transparent',
                     elevation: 0,
@@ -32,12 +42,13 @@ const HomeStackNavigator: React.FC = () => {
                     shadowColor: 'transparent',
                     elevation: 0,
                 },
-                headerBackImage: () => <CustomBackButton />, // Use custom back button
-                headerBackTitleVisible: false, // Hide the default back button title
+                headerBackImage: () => <CustomBackButton />,
+                headerBackTitleVisible: false,
             }}
         >
             <HomeStack.Screen name="Home" component={HomeScreen} />
-            {/* Add other screens if needed */}
+            <HomeStack.Screen name="Music" component={MusicScreen} />
+            <HomeStack.Screen name="Sound" component={SoundScreen} />
         </HomeStack.Navigator>
     );
 };

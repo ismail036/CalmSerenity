@@ -1,11 +1,23 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
-import {BackgroundColorContext} from "../context/BackgroundColorContext.tsx";
+import { BackgroundColorContext } from "../context/BackgroundColorContext.tsx";
+import { useNavigation } from '@react-navigation/native'; // Import navigation hook
 
 const { width } = Dimensions.get('window');
 
 function HomeScreen() {
     const { backgroundColor } = useContext(BackgroundColorContext);
+    const navigation = useNavigation(); // Access navigation object
+
+    // Handler function to navigate to the MusicScreen with the button label
+    const handleMusicPress = (label: string) => {
+      navigation.navigate('Music', {label});
+    };
+
+    // Handler function to navigate to the SoundScreen with the button label
+    const handleSoundPress = (label: string) => {
+      navigation.navigate('Sound', {label});
+    };
 
     return (
         <ScrollView style={[styles.container, { backgroundColor }]}>
@@ -26,8 +38,12 @@ function HomeScreen() {
 
             <Text style={[styles.text, styles.categoryTitle]}>Music:</Text>
             <View style={styles.buttonContainer}>
-                {['Calm', 'Very calm', 'Moderate', 'Energetic', 'Growing'].map((item, index) => (
-                    <TouchableOpacity key={index} style={styles.optionButton}>
+                {['Calm', 'Inspiring', 'Happy', 'Dramatic', 'Energizing' , 'Sad' , 'Dark'].map((item, index) => (
+                    <TouchableOpacity
+                        key={index}
+                        style={styles.optionButton}
+                        onPress={() => handleMusicPress(item)} // Navigate to MusicScreen with label
+                    >
                         <Text style={[styles.text, styles.optionButtonText]}>{item}</Text>
                     </TouchableOpacity>
                 ))}
@@ -36,7 +52,11 @@ function HomeScreen() {
             <Text style={[styles.text, styles.categoryTitle]}>Sound:</Text>
             <View style={styles.buttonContainer}>
                 {['Ocean', 'Rain', 'Forest', 'Birds', 'City', 'Wind', 'Woodland', 'Storm', 'Traffic', 'Rural', 'Night', 'Room tones' , 'Industrial' , 'Crowd Walla' , 'Desert'].map((item, index) => (
-                    <TouchableOpacity key={index} style={styles.optionButton}>
+                    <TouchableOpacity
+                        key={index}
+                        style={styles.optionButton}
+                        onPress={() => handleSoundPress(item)} // Navigate to SoundScreen with label
+                    >
                         <Text style={[styles.text, styles.optionButtonText]}>{item}</Text>
                     </TouchableOpacity>
                 ))}
