@@ -1,18 +1,109 @@
-// SleepTracking.tsx
-import React, {useContext, useState} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import React, { useContext, useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, AppState, AppStateStatus } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
-import {BackgroundColorContext} from "../context/BackgroundColorContext.tsx";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BackgroundColorContext } from "../context/BackgroundColorContext.tsx";
 
 const screenWidth = Dimensions.get('window').width;
 
 const SleepTracking: React.FC = () => {
-
     const { backgroundColor } = useContext(BackgroundColorContext);
+    const [isSleeping, setIsSleeping] = useState(false);
+    const [sleepStart, setSleepStart] = useState<number | null>(null);
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const [sleepData, setSleepData] = useState<number[]>([]);
+    const [appState, setAppState] = useState<AppStateStatus>(AppState.currentState);
 
-    const [isSleeping, setIsSleeping] = useState(false); // Uyku durumunu toggle etmek için
+    useEffect(() => {
+        const loadSleepData = async () => {
+            try {
+                const storedData = await AsyncStorage.getItem('sleepData');
+                const storedStartTime = await AsyncStorage.getItem('sleepStart');
 
-    const sleepTime = '07:24:34';
+                if (storedData) {
+                    const parsedData = JSON.parse(storedData).filter((d: number) => !isNaN(d) && isFinite(d));
+                    setSleepData(parsedData);
+                }
+
+                if (storedStartTime) {
+                    const parsedStartTime = JSON.parse(storedStartTime);
+                    const now = Date.now();
+                    setSleepStart(parsedStartTime);
+                    setIsSleeping(true);
+                    setElapsedTime(Math.floor((now - parsedStartTime) / 1000)); // Zamanı hesapla
+                }
+            } catch (error) {
+                console.error('Error loading sleep data or start time', error);
+            }
+        };
+
+        loadSleepData();
+    }, []);
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout | null = null;
+        if (isSleeping && sleepStart !== null) {
+            timer = setInterval(() => {
+                const now = Date.now();
+                setElapsedTime(Math.floor((now - sleepStart) / 1000)); // Geçen süreyi günceller
+            }, 1000);
+        }
+        return () => {
+            if (timer !== null) {
+                clearInterval(timer);
+            }
+        };
+    }, [isSleeping, sleepStart]);
+
+    useEffect(() => {
+        const handleAppStateChange = (nextAppState: AppStateStatus) => {
+            if (appState.match(/inactive|background/) && nextAppState === 'active') {
+                const now = Date.now();
+                if (isSleeping && sleepStart !== null) {
+                    setElapsedTime(Math.floor((now - sleepStart) / 1000)); // Uygulama geri döndüğünde süreyi günceller
+                }
+            }
+            setAppState(nextAppState); // AppStateStatus türünde bir değer atanıyor
+        };
+
+        const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+        return () => {
+            subscription.remove(); // Artık removeEventListener yerine subscription.remove() kullanılır
+        };
+    }, [appState, isSleeping, sleepStart]);
+
+    const handleStartSleep = async () => {
+        const startTime = Date.now();
+        setIsSleeping(true);
+        setSleepStart(startTime);
+
+        await AsyncStorage.setItem('sleepStart', JSON.stringify(startTime));
+    };
+
+    const handleStopSleep = async () => {
+        setIsSleeping(false);
+        if (sleepStart !== null) {
+            const now = Date.now();
+            const duration = Math.floor((now - sleepStart) / 1000);
+
+            const updatedSleepData = [...sleepData, duration].filter((d) => !isNaN(d) && isFinite(d));
+            setSleepData(updatedSleepData);
+
+            await AsyncStorage.setItem('sleepData', JSON.stringify(updatedSleepData));
+
+            setSleepStart(null);
+            setElapsedTime(0);
+            await AsyncStorage.removeItem('sleepStart'); // Sleep start verisini durdurduktan sonra temizler
+        }
+    };
+
+    const formatElapsedTime = (seconds: number) => {
+        const hrs = Math.floor(seconds / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    };
 
     return (
         <View style={[styles.container, { backgroundColor }]}>
@@ -39,14 +130,14 @@ const SleepTracking: React.FC = () => {
             <View>
                 <LineChart
                     data={{
-                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        labels: ['Sleep 1', 'Sleep 2', 'Sleep 3'],
                         datasets: [
                             {
-                                data: [200, 400, 300, 600, 248, 450],
+                                data: sleepData.length > 0 ? sleepData : [0],
                             },
                         ],
                     }}
-                    width={screenWidth - 40} // Ekran genişliği eksi padding
+                    width={screenWidth - 40}
                     height={220}
                     chartConfig={{
                         backgroundColor: '#253334',
@@ -61,10 +152,12 @@ const SleepTracking: React.FC = () => {
 
             <TouchableOpacity
                 style={styles.sleepButton}
-                onPress={() => setIsSleeping(!isSleeping)} // Uyku durumunu toggle et
+                onPress={isSleeping ? handleStopSleep : handleStartSleep}
             >
                 <Text style={styles.sleepButtonText}>
-                    {isSleeping ? `Stop sleep\n${sleepTime}` : 'Start sleep'}
+                    {isSleeping
+                        ? `Stop sleep\n${formatElapsedTime(elapsedTime)}`
+                        : 'Start sleep'}
                 </Text>
             </TouchableOpacity>
         </View>
