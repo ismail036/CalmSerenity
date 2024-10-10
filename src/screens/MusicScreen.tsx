@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import {View, Text, StyleSheet, FlatList, Image, ActivityIndicator, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { BackgroundColorContext } from '../context/BackgroundColorContext';
-import {RouteProp, useNavigation} from '@react-navigation/native';
-import {Song} from "../types/Song.ts";
-import {data} from "cheerio/dist/esm/api/attributes";
+import { RouteProp, useNavigation } from '@react-navigation/native';
+import { Song } from "../types/Song.ts";
 
 // Define the route prop type
 type RootStackParamList = {
@@ -13,15 +12,13 @@ type RootStackParamList = {
 
 type MusicScreenRouteProp = RouteProp<RootStackParamList, 'Music'>;
 
-
-
 // Utility function to decode basic HTML entities
 const decodeHtmlEntities = (text: string): string => {
-    return text.replace(/&#x27;/g, "'")  // Handle apostrophes
-        .replace(/&amp;/g, '&')    // Handle & symbol
-        .replace(/&lt;/g, '<')     // Handle <
-        .replace(/&gt;/g, '>')     // Handle >
-        .replace(/&quot;/g, '"');  // Handle quotes
+    return text.replace(/&#x27;/g, "'")
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"');
 };
 
 const MusicScreen: React.FC<{ route: MusicScreenRouteProp }> = ({ route }) => {
@@ -29,37 +26,39 @@ const MusicScreen: React.FC<{ route: MusicScreenRouteProp }> = ({ route }) => {
     const [songData, setSongData] = useState<Song[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // Access the label passed from HomeScreen and convert it to lowercase
     const { label } = route.params;
     const lowerCaseTitle = label.toLowerCase();
 
     useEffect(() => {
         const fetchSongs = async () => {
             try {
-                console.log(`https://uppbeat.io/browse/music/${lowerCaseTitle}`);
-
-                // Make the network request
                 const { data: html } = await axios.get(`https://uppbeat.io/browse/music/${lowerCaseTitle}`);
                 let songs: Song[] = [];
-
 
                 // Regex patterns to extract song data
                 const titleRegex = /<div class="ub-track-info-title-left" data-testid="track-name">(.*?)<\/div>/g;
                 const imgRegex = /<img.*?class="artist-avatar".*?src="(.*?)"/g;
                 const linkRegex = /<a class="desktop" href="(.*?)">/g;
+                const artistRegex = /<a data-testid="artist-name".*?>.*?<span class="ub-btn-label">(.*?)<\/span><\/a>/g;  // Updated artist extraction
 
                 let titleMatch;
                 let imgMatch;
                 let linkMatch;
+                let artistMatch;
                 let id = 0;
 
-                // Iterate over matches to collect titles, image URLs, and links
-                while ((titleMatch = titleRegex.exec(html)) !== null && (imgMatch = imgRegex.exec(html)) !== null && (linkMatch = linkRegex.exec(html)) !== null) {
-                    const title = decodeHtmlEntities(titleMatch[1].trim());  // Decode HTML entities
-                    const imageUrl = imgMatch[1];  // Extract image URL
-                    const link = `https://uppbeat.io${linkMatch[1]}`;  // Construct full link
+                // Iterate over matches to collect titles, image URLs, links, and artists
+                while ((titleMatch = titleRegex.exec(html)) !== null
+                && (imgMatch = imgRegex.exec(html)) !== null
+                && (linkMatch = linkRegex.exec(html)) !== null
+                && (artistMatch = artistRegex.exec(html)) !== null) {
 
-                    songs.push({ id: id.toString(), title, imageUrl, link });
+                    const title = decodeHtmlEntities(titleMatch[1].trim());
+                    const imageUrl = imgMatch[1];
+                    const link = `https://uppbeat.io${linkMatch[1]}`;
+                    const artist = decodeHtmlEntities(artistMatch[1].trim());
+
+                    songs.push({ id: id.toString(), title, imageUrl, link, artist });
                     id++;
                 }
 
@@ -85,14 +84,14 @@ const MusicScreen: React.FC<{ route: MusicScreenRouteProp }> = ({ route }) => {
     const renderSongItem = ({ item }: { item: Song }) => (
         <TouchableOpacity
             onPress={() => {
-                // @ts-ignore
-                navigation.navigate('MusicDetail', { song: item }); // Navigate to the detail screen with song data
+                navigation.navigate('MusicDetail', { song: item });
             }}
         >
             <View style={styles.songItem}>
                 <Image source={{ uri: item.imageUrl }} style={styles.songImage} />
                 <View style={styles.songDetails}>
                     <Text style={styles.songTitle}>{item.title}</Text>
+                    <Text style={styles.songArtist}>{item.artist || 'Unknown Artist'}</Text> 
                     <Text style={styles.songLink}>Listen</Text>
                 </View>
             </View>
@@ -132,14 +131,12 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         marginBottom: 5,
-        fontFamily: 'AlegreyaBold',
     },
     subtitle: {
         textAlign: 'center',
         fontSize: 18,
         color: 'gray',
         marginBottom: 20,
-        fontFamily: 'AlegreyaSansRegular',
     },
     songList: {
         paddingBottom: 20,
@@ -163,15 +160,17 @@ const styles = StyleSheet.create({
     songTitle: {
         fontSize: 18,
         color: 'white',
-        fontFamily: 'AlegreyaSansRegular',
+    },
+    songArtist: {
+        fontSize: 16,
+        color: '#BBBBBB',
+        marginTop: 5,
     },
     songLink: {
         fontSize: 16,
         color: '#1E90FF',
         marginTop: 5,
-        fontFamily: 'AlegreyaSansRegular',
     },
 });
 
 export default MusicScreen;
-

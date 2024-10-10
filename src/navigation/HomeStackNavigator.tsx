@@ -8,6 +8,7 @@ import CustomBackButton from "../components/CustomBackButton.tsx";
 import { BackgroundColorContext } from '../context/BackgroundColorContext';
 import MusicDetailScreen from "../screens/MusicDetailScreen.tsx";
 import {Song} from "../types/Song.ts";
+import SoundDetailScreen from "../screens/SoundDetailScreen.tsx";
 
 // Define a type for the stack parameters
 type RootStackParamList = {
@@ -54,6 +55,8 @@ const HomeStackNavigator: React.FC = () => {
             <HomeStack.Screen name="Music" component={MusicScreen} />
             <HomeStack.Screen name="Sound" component={SoundScreen} />
             <HomeStack.Screen name="MusicDetail" component={MusicDetailScreen} />
+            <HomeStack.Screen name="SoundDetail" component={SoundDetailScreen} />
+
 
         </HomeStack.Navigator>
     );

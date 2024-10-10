@@ -51,7 +51,7 @@ function HomeScreen() {
 
             <Text style={[styles.text, styles.categoryTitle]}>Sound:</Text>
             <View style={styles.buttonContainer}>
-                {['Ocean', 'Rain', 'Forest', 'Birds', 'City', 'Wind', 'Woodland', 'Storm', 'Traffic', 'Rural', 'Night', 'Room tones' , 'Industrial' , 'Crowd Walla' , 'Desert'].map((item, index) => (
+                {['Ocean', 'Forest', 'Rain', 'Birds', 'City', 'Wind', 'Woodland', 'Storm', 'Traffic', 'Rural', 'Night', 'Industrial' ,  'Desert'].map((item, index) => (
                     <TouchableOpacity
                         key={index}
                         style={styles.optionButton}

@@ -1,26 +1,28 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Alert, Image } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import Sound from 'react-native-sound';
 import Slider from '@react-native-community/slider';
 import axios from 'axios';
-import RNFS from 'react-native-fs';
+import RNFS from 'react-native-fs'; // File system package
 
-interface Song {
+// Enable playback in silence mode (iOS)
+Sound.setCategory('Playback', true); // Ensures audio plays in background and silence mode on iOS
+
+interface Sounds {
     id: string;
     title: string;
-    imageUrl: string;
     link: string;
-    artist?: string;
+    artist?: string; // Optional artist field
 }
 
 type RootStackParamList = {
-    MusicDetail: { song: Song };
+    SoundDetail: { song: Sounds };
 };
 
-type MusicDetailScreenRouteProp = RouteProp<RootStackParamList, 'MusicDetail'>;
+type SoundDetailScreenRouteProp = RouteProp<RootStackParamList, 'SoundDetail'>;
 
-const MusicDetailScreen: React.FC<{ route: MusicDetailScreenRouteProp }> = ({ route }) => {
+const SoundDetailScreen: React.FC<{ route: SoundDetailScreenRouteProp }> = ({ route }) => {
     const { song } = route.params;
     const [isPlaying, setIsPlaying] = useState(false);
     const [audioLink, setAudioLink] = useState<string | null>(null);
@@ -39,7 +41,6 @@ const MusicDetailScreen: React.FC<{ route: MusicDetailScreenRouteProp }> = ({ ro
             const mp3LinkMatch = html.match(/https?:\/\/[^\s"']+\.mp3/);
             if (mp3LinkMatch && mp3LinkMatch[0]) {
                 const mp3Link = mp3LinkMatch[0];
-
                 const downloadResult = await RNFS.downloadFile({
                     fromUrl: mp3Link,
                     toFile: localFilePath,
@@ -78,7 +79,6 @@ const MusicDetailScreen: React.FC<{ route: MusicDetailScreenRouteProp }> = ({ ro
 
     useEffect(() => {
         checkAndPlayFromStorage();
-
         return () => {
             if (soundInstance) {
                 soundInstance.release();
@@ -167,10 +167,9 @@ const MusicDetailScreen: React.FC<{ route: MusicDetailScreenRouteProp }> = ({ ro
 
     return (
         <View style={styles.container}>
-            <Image source={{ uri: song.imageUrl }} style={styles.songImage} />
+            <Image source={require('../assets/icons/soundIcon.jpg')} style={styles.soundImage} />
             <Text style={styles.songTitle}>{song.title}</Text>
             <Text style={styles.songArtist}>{song.artist || 'Unknown Artist'}</Text>
-
             <Slider
                 value={currentTime}
                 onValueChange={onSliderValueChange}
@@ -185,7 +184,6 @@ const MusicDetailScreen: React.FC<{ route: MusicDetailScreenRouteProp }> = ({ ro
                 <Text style={styles.timeText}>{formatTime(currentTime)}</Text>
                 <Text style={styles.timeText}>{formatTime(duration)}</Text>
             </View>
-
             <TouchableOpacity onPress={togglePlayback} style={styles.playPauseButton}>
                 <Text style={styles.playPauseText}>{isPlaying ? 'Pause' : 'Play'}</Text>
             </TouchableOpacity>
@@ -196,8 +194,7 @@ const MusicDetailScreen: React.FC<{ route: MusicDetailScreenRouteProp }> = ({ ro
 const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
-    const paddedSecs = secs < 10 ? `0${secs}` : secs;
-    return `${mins}:${paddedSecs}`;
+    return `${mins}:${secs < 10 ? `0${secs}` : secs}`;
 };
 
 const styles = StyleSheet.create({
@@ -218,11 +215,10 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         marginTop: 10,
     },
-    songImage: {
-        width: 250,
-        height: 250,
-        borderRadius: 10,
-        marginBottom: 30,
+    soundImage: {
+        width: 150,
+        height: 150,
+        marginBottom: 20,
     },
     songTitle: {
         fontSize: 24,
@@ -267,4 +263,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MusicDetailScreen;
+export default SoundDetailScreen;
