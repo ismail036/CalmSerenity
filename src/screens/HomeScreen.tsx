@@ -27,7 +27,10 @@ function HomeScreen() {
             <View style={styles.recommendationCard}>
                 <Text style={[styles.text, styles.recommendationTitle]}>Recommendations:</Text>
                 <Text style={[styles.text, styles.recommendationText]}>We have prepared a recommendation for you today.</Text>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => handleMusicPress('Calm')}
+                >
                     <Text style={[styles.text, styles.buttonText]}>Listen now</Text>
                 </TouchableOpacity>
                 <Image
@@ -51,7 +54,7 @@ function HomeScreen() {
 
             <Text style={[styles.text, styles.categoryTitle]}>Sound:</Text>
             <View style={styles.buttonContainer}>
-                {['Ocean', 'Rain', 'Forest', 'Birds', 'City', 'Wind', 'Woodland', 'Storm', 'Traffic', 'Rural', 'Night', 'Room tones' , 'Industrial' , 'Crowd Walla' , 'Desert'].map((item, index) => (
+                {['Ocean', 'Forest', 'Rain', 'Birds', 'City', 'Wind', 'Woodland', 'Storm', 'Traffic', 'Rural', 'Night', 'Industrial' ,  'Desert'].map((item, index) => (
                     <TouchableOpacity
                         key={index}
                         style={styles.optionButton}
