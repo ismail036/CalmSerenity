@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { View, Text, StyleSheet, FlatList, Image, ActivityIndicator, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, FlatList, Image, ActivityIndicator, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 import { BackgroundColorContext } from '../context/BackgroundColorContext';
-import {  RouteProp } from '@react-navigation/native';
+import {RouteProp, useNavigation} from '@react-navigation/native';
+import {Song} from "../types/Song.ts";
+import {data} from "cheerio/dist/esm/api/attributes";
 
 // Define the route prop type
 type RootStackParamList = {
@@ -11,11 +13,7 @@ type RootStackParamList = {
 
 type MusicScreenRouteProp = RouteProp<RootStackParamList, 'Music'>;
 
-interface Song {
-    id: string;
-    title: string;
-    imageUrl: string;  // Add image URL for the song
-}
+
 
 // Utility function to decode basic HTML entities
 const decodeHtmlEntities = (text: string): string => {
@@ -38,22 +36,30 @@ const MusicScreen: React.FC<{ route: MusicScreenRouteProp }> = ({ route }) => {
     useEffect(() => {
         const fetchSongs = async () => {
             try {
+                console.log(`https://uppbeat.io/browse/music/${lowerCaseTitle}`);
+
                 // Make the network request
                 const { data: html } = await axios.get(`https://uppbeat.io/browse/music/${lowerCaseTitle}`);
                 let songs: Song[] = [];
 
+
+                // Regex patterns to extract song data
                 const titleRegex = /<div class="ub-track-info-title-left" data-testid="track-name">(.*?)<\/div>/g;
                 const imgRegex = /<img.*?class="artist-avatar".*?src="(.*?)"/g;
+                const linkRegex = /<a class="desktop" href="(.*?)">/g;
 
                 let titleMatch;
                 let imgMatch;
+                let linkMatch;
                 let id = 0;
 
-                // Iterate over both matches to collect titles and corresponding image URLs
-                while ((titleMatch = titleRegex.exec(html)) !== null && (imgMatch = imgRegex.exec(html)) !== null) {
+                // Iterate over matches to collect titles, image URLs, and links
+                while ((titleMatch = titleRegex.exec(html)) !== null && (imgMatch = imgRegex.exec(html)) !== null && (linkMatch = linkRegex.exec(html)) !== null) {
                     const title = decodeHtmlEntities(titleMatch[1].trim());  // Decode HTML entities
                     const imageUrl = imgMatch[1];  // Extract image URL
-                    songs.push({ id: id.toString(), title, imageUrl });
+                    const link = `https://uppbeat.io${linkMatch[1]}`;  // Construct full link
+
+                    songs.push({ id: id.toString(), title, imageUrl, link });
                     id++;
                 }
 
@@ -74,18 +80,27 @@ const MusicScreen: React.FC<{ route: MusicScreenRouteProp }> = ({ route }) => {
         fetchSongs();
     }, [lowerCaseTitle]);
 
+    const navigation = useNavigation();
+
     const renderSongItem = ({ item }: { item: Song }) => (
-        <View style={styles.songItem}>
-            <Image source={{ uri: item.imageUrl }} style={styles.songImage} />
-            <View style={styles.songDetails}>
-                <Text style={styles.songTitle}>{item.title}</Text>
+        <TouchableOpacity
+            onPress={() => {
+                // @ts-ignore
+                navigation.navigate('MusicDetail', { song: item }); // Navigate to the detail screen with song data
+            }}
+        >
+            <View style={styles.songItem}>
+                <Image source={{ uri: item.imageUrl }} style={styles.songImage} />
+                <View style={styles.songDetails}>
+                    <Text style={styles.songTitle}>{item.title}</Text>
+                    <Text style={styles.songLink}>Listen</Text>
+                </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 
     return (
         <View style={[styles.container, { backgroundColor }]}>
-
             <Text style={styles.title}>Music</Text>
             <Text style={styles.subtitle}>{label}</Text>
 
@@ -110,16 +125,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingTop: 20,
         backgroundColor: '#253334',
-    },
-    backButton: {
-        position: 'absolute',
-        top: 20,
-        left: 10,
-        zIndex: 1,
-    },
-    backButtonText: {
-        fontSize: 24,
-        color: 'white',
     },
     title: {
         textAlign: 'center',
@@ -160,6 +165,13 @@ const styles = StyleSheet.create({
         color: 'white',
         fontFamily: 'AlegreyaSansRegular',
     },
+    songLink: {
+        fontSize: 16,
+        color: '#1E90FF',
+        marginTop: 5,
+        fontFamily: 'AlegreyaSansRegular',
+    },
 });
 
 export default MusicScreen;
+
