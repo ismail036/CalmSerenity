@@ -27,7 +27,10 @@ function HomeScreen() {
             <View style={styles.recommendationCard}>
                 <Text style={[styles.text, styles.recommendationTitle]}>Recommendations:</Text>
                 <Text style={[styles.text, styles.recommendationText]}>We have prepared a recommendation for you today.</Text>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => handleMusicPress('Calm')}
+                >
                     <Text style={[styles.text, styles.buttonText]}>Listen now</Text>
                 </TouchableOpacity>
                 <Image

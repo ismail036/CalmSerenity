@@ -91,7 +91,7 @@ const MusicScreen: React.FC<{ route: MusicScreenRouteProp }> = ({ route }) => {
                 <Image source={{ uri: item.imageUrl }} style={styles.songImage} />
                 <View style={styles.songDetails}>
                     <Text style={styles.songTitle}>{item.title}</Text>
-                    <Text style={styles.songArtist}>{item.artist || 'Unknown Artist'}</Text> 
+                    <Text style={styles.songArtist}>{item.artist || 'Unknown Artist'}</Text>
                     <Text style={styles.songLink}>Listen</Text>
                 </View>
             </View>
