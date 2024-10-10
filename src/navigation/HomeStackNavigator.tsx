@@ -6,12 +6,16 @@ import SoundScreen from '../screens/SoundScreen';
 import { Image } from 'react-native';
 import CustomBackButton from "../components/CustomBackButton.tsx";
 import { BackgroundColorContext } from '../context/BackgroundColorContext';
+import MusicDetailScreen from "../screens/MusicDetailScreen.tsx";
+import {Song} from "../types/Song.ts";
 
 // Define a type for the stack parameters
 type RootStackParamList = {
     Home: undefined;
     Music: { label: string };
     Sound: { label: string };
+    MusicDetail: { song: Song };  // This expects a song object to be passed
+
 };
 
 const HomeStack = createStackNavigator<RootStackParamList>();
@@ -49,6 +53,8 @@ const HomeStackNavigator: React.FC = () => {
             <HomeStack.Screen name="Home" component={HomeScreen} />
             <HomeStack.Screen name="Music" component={MusicScreen} />
             <HomeStack.Screen name="Sound" component={SoundScreen} />
+            <HomeStack.Screen name="MusicDetail" component={MusicDetailScreen} />
+
         </HomeStack.Navigator>
     );
 };
