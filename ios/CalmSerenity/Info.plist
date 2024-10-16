@@ -48,33 +48,38 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIAppFonts</key>
-	<array>
-		<string>AlegreyaSansBlack.ttf</string>
-		<string>AlegreyaSansBlackItalic.ttf</string>
-		<string>AlegreyaSansBold.ttf</string>
-		<string>AlegreyaSansBoldItalic.ttf</string>
-		<string>AlegreyaSansExtraBold.ttf</string>
-		<string>AlegreyaSansExtraBoldItalic.ttf</string>
-		<string>AlegreyaSansItalic.ttf</string>
-		<string>AlegreyaSansLight.ttf</string>
-		<string>AlegreyaSansLightItalic.ttf</string>
-		<string>AlegreyaSansMedium.ttf</string>
-		<string>AlegreyaSansMediumItalic.ttf</string>
-		<string>AlegreyaSansRegular.ttf</string>
-		<string>AlegreyaSansThin.ttf</string>
-		<string>AlegreyaSansThinItalic.ttf</string>
-		<string>AlegreyaBlack.ttf</string>
-		<string>AlegreyaBlackItalic.ttf</string>
-		<string>AlegreyaBold.ttf</string>
-		<string>AlegreyaBoldItalic.ttf</string>
-		<string>AlegreyaExtraBold.ttf</string>
-		<string>AlegreyaExtraBoldItalic.ttf</string>
-		<string>AlegreyaItalic.ttf</string>
-		<string>AlegreyaMedium.ttf</string>
-		<string>AlegreyaMediumItalic.ttf</string>
-		<string>AlegreyaRegular.ttf</string>
-		<string>AlegreyaSemiBold.ttf</string>
-		<string>AlegreyaSemiBoldItalic.ttf</string>
-	</array>
+	<key>UIAppFonts</key>
+    <array>
+        <!-- Alegreya Sans Fontları -->
+        <string>AlegreyaSansBlack.ttf</string>
+        <string>AlegreyaSansBlackItalic.ttf</string>
+        <string>AlegreyaSansBold.ttf</string>
+        <string>AlegreyaSansBoldItalic.ttf</string>
+        <string>AlegreyaSansExtraBold.ttf</string>
+        <string>AlegreyaSansExtraBoldItalic.ttf</string>
+        <string>AlegreyaSansItalic.ttf</string>
+        <string>AlegreyaSansLight.ttf</string>
+        <string>AlegreyaSansLightItalic.ttf</string>
+        <string>AlegreyaSansMedium.ttf</string>
+        <string>AlegreyaSansMediumItalic.ttf</string>
+        <string>AlegreyaSansRegular.ttf</string>
+        <string>AlegreyaSansThin.ttf</string>
+        <string>AlegreyaSansThinItalic.ttf</string>
+
+        <!-- Alegreya Fontları -->
+        <string>AlegreyaBlack.ttf</string>
+        <string>AlegreyaBlackItalic.ttf</string>
+        <string>AlegreyaBold.ttf</string>
+        <string>AlegreyaBoldItalic.ttf</string>
+        <string>AlegreyaExtraBold.ttf</string>
+        <string>AlegreyaExtraBoldItalic.ttf</string>
+        <string>AlegreyaItalic.ttf</string>
+        <string>AlegreyaMedium.ttf</string>
+        <string>AlegreyaMediumItalic.ttf</string>
+        <string>AlegreyaRegular.ttf</string>
+        <string>AlegreyaSemiBold.ttf</string>
+        <string>AlegreyaSemiBoldItalic.ttf</string>
+    </array>
+
 </dict>
 </plist>
