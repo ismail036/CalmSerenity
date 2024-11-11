@@ -57,9 +57,9 @@
 		00E356EE1AD99517003FC87E /* CalmSerenityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalmSerenityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CalmSerenityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalmSerenityTests.m; sourceTree = "<group>"; };
-		035EE0EEA4014A619F0564F7 /* AlegreyaSansThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansThinItalic.ttf; path = ../src/assets/fonts/AlegreyaSansThinItalic.ttf; sourceTree = "<group>"; };
-		0A760D7D5DFF41DF96B9AF2A /* AlegreyaBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaBoldItalic.ttf; sourceTree = "<group>"; };
-		0B33E4B1A7C64C4199375738 /* AlegreyaSansBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaSansBoldItalic.ttf; sourceTree = "<group>"; };
+		035EE0EEA4014A619F0564F7 /* AlegreyaSansThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansThinItalic.ttf; path = ../src/assets/fonts/AlegreyaSansThinItalic.ttf; sourceTree = "<group>"; };
+		0A760D7D5DFF41DF96B9AF2A /* AlegreyaBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaBoldItalic.ttf; sourceTree = "<group>"; };
+		0B33E4B1A7C64C4199375738 /* AlegreyaSansBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaSansBoldItalic.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* CalmSerenity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalmSerenity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = CalmSerenity/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = CalmSerenity/AppDelegate.mm; sourceTree = "<group>"; };
@@ -68,37 +68,37 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = CalmSerenity/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = CalmSerenity/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-CalmSerenity-CalmSerenityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalmSerenity-CalmSerenityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BA905B94A51CD1EB07E64BE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = CalmSerenity/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		24D4FD4AD4B74D0B877671A2 /* AlegreyaSansBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBold.ttf; path = ../src/assets/fonts/AlegreyaSansBold.ttf; sourceTree = "<group>"; };
-		2D750DEC7E064A1AA03E6F0D /* AlegreyaSansRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansRegular.ttf; path = ../src/assets/fonts/AlegreyaSansRegular.ttf; sourceTree = "<group>"; };
+		1BA905B94A51CD1EB07E64BE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = CalmSerenity/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		24D4FD4AD4B74D0B877671A2 /* AlegreyaSansBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBold.ttf; path = ../src/assets/fonts/AlegreyaSansBold.ttf; sourceTree = "<group>"; };
+		2D750DEC7E064A1AA03E6F0D /* AlegreyaSansRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansRegular.ttf; path = ../src/assets/fonts/AlegreyaSansRegular.ttf; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-CalmSerenity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalmSerenity.debug.xcconfig"; path = "Target Support Files/Pods-CalmSerenity/Pods-CalmSerenity.debug.xcconfig"; sourceTree = "<group>"; };
-		3E0DDBB4793B4CC2A3974A90 /* AlegreyaSansLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansLightItalic.ttf; path = ../src/assets/fonts/AlegreyaSansLightItalic.ttf; sourceTree = "<group>"; };
-		438101AD5D2E4D3B9AFAA6F7 /* AlegreyaSemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSemiBold.ttf; path = ../src/assets/fonts/AlegreyaSemiBold.ttf; sourceTree = "<group>"; };
-		4FB9A65FAB2C4DEE9BDD8BAE /* AlegreyaMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaMedium.ttf; path = ../src/assets/fonts/AlegreyaMedium.ttf; sourceTree = "<group>"; };
+		3E0DDBB4793B4CC2A3974A90 /* AlegreyaSansLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansLightItalic.ttf; path = ../src/assets/fonts/AlegreyaSansLightItalic.ttf; sourceTree = "<group>"; };
+		438101AD5D2E4D3B9AFAA6F7 /* AlegreyaSemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSemiBold.ttf; path = ../src/assets/fonts/AlegreyaSemiBold.ttf; sourceTree = "<group>"; };
+		4FB9A65FAB2C4DEE9BDD8BAE /* AlegreyaMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaMedium.ttf; path = ../src/assets/fonts/AlegreyaMedium.ttf; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-CalmSerenity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalmSerenity.release.xcconfig"; path = "Target Support Files/Pods-CalmSerenity/Pods-CalmSerenity.release.xcconfig"; sourceTree = "<group>"; };
-		5B229BD6EDB84AF199A64FD2 /* AlegreyaItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaItalic.ttf; path = ../src/assets/fonts/AlegreyaItalic.ttf; sourceTree = "<group>"; };
+		5B229BD6EDB84AF199A64FD2 /* AlegreyaItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaItalic.ttf; path = ../src/assets/fonts/AlegreyaItalic.ttf; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-CalmSerenity-CalmSerenityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalmSerenity-CalmSerenityTests.debug.xcconfig"; path = "Target Support Files/Pods-CalmSerenity-CalmSerenityTests/Pods-CalmSerenity-CalmSerenityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-CalmSerenity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalmSerenity.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EFB62518278496894F603EF /* AlegreyaSansMediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansMediumItalic.ttf; path = ../src/assets/fonts/AlegreyaSansMediumItalic.ttf; sourceTree = "<group>"; };
-		6680158EA59046F48EFBD41D /* AlegreyaSansExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansExtraBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaSansExtraBoldItalic.ttf; sourceTree = "<group>"; };
-		689998B0FC5645D19D50AF1B /* AlegreyaBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBold.ttf; path = ../src/assets/fonts/AlegreyaBold.ttf; sourceTree = "<group>"; };
-		6CD00AFD129B4FB2B4C4E0B1 /* AlegreyaSemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSemiBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaSemiBoldItalic.ttf; sourceTree = "<group>"; };
-		731D3A2227E644319247CCAB /* AlegreyaExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaExtraBold.ttf; path = ../src/assets/fonts/AlegreyaExtraBold.ttf; sourceTree = "<group>"; };
-		77B5FC66CAED49CE8B03234C /* AlegreyaBlack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBlack.ttf; path = ../src/assets/fonts/AlegreyaBlack.ttf; sourceTree = "<group>"; };
-		7EC46B723DCF499AA12DF429 /* AlegreyaSansItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansItalic.ttf; path = ../src/assets/fonts/AlegreyaSansItalic.ttf; sourceTree = "<group>"; };
-		8006493C67454E98AC017A8C /* AlegreyaBlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBlackItalic.ttf; path = ../src/assets/fonts/AlegreyaBlackItalic.ttf; sourceTree = "<group>"; };
+		5EFB62518278496894F603EF /* AlegreyaSansMediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansMediumItalic.ttf; path = ../src/assets/fonts/AlegreyaSansMediumItalic.ttf; sourceTree = "<group>"; };
+		6680158EA59046F48EFBD41D /* AlegreyaSansExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansExtraBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaSansExtraBoldItalic.ttf; sourceTree = "<group>"; };
+		689998B0FC5645D19D50AF1B /* AlegreyaBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBold.ttf; path = ../src/assets/fonts/AlegreyaBold.ttf; sourceTree = "<group>"; };
+		6CD00AFD129B4FB2B4C4E0B1 /* AlegreyaSemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSemiBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaSemiBoldItalic.ttf; sourceTree = "<group>"; };
+		731D3A2227E644319247CCAB /* AlegreyaExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaExtraBold.ttf; path = ../src/assets/fonts/AlegreyaExtraBold.ttf; sourceTree = "<group>"; };
+		77B5FC66CAED49CE8B03234C /* AlegreyaBlack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBlack.ttf; path = ../src/assets/fonts/AlegreyaBlack.ttf; sourceTree = "<group>"; };
+		7EC46B723DCF499AA12DF429 /* AlegreyaSansItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansItalic.ttf; path = ../src/assets/fonts/AlegreyaSansItalic.ttf; sourceTree = "<group>"; };
+		8006493C67454E98AC017A8C /* AlegreyaBlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaBlackItalic.ttf; path = ../src/assets/fonts/AlegreyaBlackItalic.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = CalmSerenity/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-CalmSerenity-CalmSerenityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalmSerenity-CalmSerenityTests.release.xcconfig"; path = "Target Support Files/Pods-CalmSerenity-CalmSerenityTests/Pods-CalmSerenity-CalmSerenityTests.release.xcconfig"; sourceTree = "<group>"; };
-		8DAFF9DC2A974A2398B906E8 /* AlegreyaSansBlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBlackItalic.ttf; path = ../src/assets/fonts/AlegreyaSansBlackItalic.ttf; sourceTree = "<group>"; };
-		9B64401E23ED47628EEF48B3 /* AlegreyaExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaExtraBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaExtraBoldItalic.ttf; sourceTree = "<group>"; };
-		A82995C862F64CC3B1B4BF41 /* AlegreyaSansMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansMedium.ttf; path = ../src/assets/fonts/AlegreyaSansMedium.ttf; sourceTree = "<group>"; };
-		B08BE42B7A824D02A6D8C399 /* AlegreyaSansExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansExtraBold.ttf; path = ../src/assets/fonts/AlegreyaSansExtraBold.ttf; sourceTree = "<group>"; };
-		CC05F1A935BA4FF18ABE888B /* AlegreyaSansBlack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBlack.ttf; path = ../src/assets/fonts/AlegreyaSansBlack.ttf; sourceTree = "<group>"; };
-		CEEBAD1EC22B4564AB8E8684 /* AlegreyaSansLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansLight.ttf; path = ../src/assets/fonts/AlegreyaSansLight.ttf; sourceTree = "<group>"; };
-		E8035AEF47D141DB9FF79D63 /* AlegreyaSansThin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansThin.ttf; path = ../src/assets/fonts/AlegreyaSansThin.ttf; sourceTree = "<group>"; };
+		8DAFF9DC2A974A2398B906E8 /* AlegreyaSansBlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBlackItalic.ttf; path = ../src/assets/fonts/AlegreyaSansBlackItalic.ttf; sourceTree = "<group>"; };
+		9B64401E23ED47628EEF48B3 /* AlegreyaExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaExtraBoldItalic.ttf; path = ../src/assets/fonts/AlegreyaExtraBoldItalic.ttf; sourceTree = "<group>"; };
+		A82995C862F64CC3B1B4BF41 /* AlegreyaSansMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansMedium.ttf; path = ../src/assets/fonts/AlegreyaSansMedium.ttf; sourceTree = "<group>"; };
+		B08BE42B7A824D02A6D8C399 /* AlegreyaSansExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansExtraBold.ttf; path = ../src/assets/fonts/AlegreyaSansExtraBold.ttf; sourceTree = "<group>"; };
+		CC05F1A935BA4FF18ABE888B /* AlegreyaSansBlack.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansBlack.ttf; path = ../src/assets/fonts/AlegreyaSansBlack.ttf; sourceTree = "<group>"; };
+		CEEBAD1EC22B4564AB8E8684 /* AlegreyaSansLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansLight.ttf; path = ../src/assets/fonts/AlegreyaSansLight.ttf; sourceTree = "<group>"; };
+		E8035AEF47D141DB9FF79D63 /* AlegreyaSansThin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaSansThin.ttf; path = ../src/assets/fonts/AlegreyaSansThin.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F5E55A42104545F1BD7174D8 /* AlegreyaMediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaMediumItalic.ttf; path = ../src/assets/fonts/AlegreyaMediumItalic.ttf; sourceTree = "<group>"; };
-		FD77C0AA4A314FDFA630B88C /* AlegreyaRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaRegular.ttf; path = ../src/assets/fonts/AlegreyaRegular.ttf; sourceTree = "<group>"; };
+		F5E55A42104545F1BD7174D8 /* AlegreyaMediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaMediumItalic.ttf; path = ../src/assets/fonts/AlegreyaMediumItalic.ttf; sourceTree = "<group>"; };
+		FD77C0AA4A314FDFA630B88C /* AlegreyaRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AlegreyaRegular.ttf; path = ../src/assets/fonts/AlegreyaRegular.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,7 +237,6 @@
 				6CD00AFD129B4FB2B4C4E0B1 /* AlegreyaSemiBoldItalic.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,6 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F33M7VP8QL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CalmSerenity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -597,7 +597,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.callmserenity;
 				PRODUCT_NAME = CalmSerenity;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -612,6 +612,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F33M7VP8QL;
 				INFOPLIST_FILE = CalmSerenity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -623,7 +624,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.callmserenity;
 				PRODUCT_NAME = CalmSerenity;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -703,10 +704,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -779,10 +777,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
